@@ -161,6 +161,9 @@
 
 - (void)onPlayButton:(UIButton *)sender
 {
+//    [self.delegate actPlayAudio:_url];
+    [self.delegate actPlayAudio:_url audioMediaItem:self];
+    return;
     NSString *category = [AVAudioSession sharedInstance].category;
     AVAudioSessionCategoryOptions options = [AVAudioSession sharedInstance].categoryOptions;
 
@@ -226,7 +229,8 @@
 
 - (UIView *)mediaView
 {
-    if (self.audioData && self.cachedMediaView == nil) {
+//    self.audioData &&
+    if ( self.cachedMediaView == nil) {
         if (self.audioData) {
             self.audioPlayer = [[AVAudioPlayer alloc] initWithData:self.audioData error:nil];
             self.audioPlayer.delegate = self;
@@ -296,14 +300,14 @@
         labelFrame.size.height =  self.progressLabel.frame.size.height;
         self.progressLabel.frame = labelFrame;
         self.progressLabel.text = durationString;
-        [playView addSubview:self.progressLabel];
+//        [playView addSubview:self.progressLabel];
 
         // create a progress bar
         self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
         CGFloat xOffset = self.playButton.frame.origin.x + self.playButton.frame.size.width + self.audioViewAttributes.controlPadding;
         CGFloat width = labelFrame.origin.x - xOffset - self.audioViewAttributes.controlPadding;
         self.progressView.frame = CGRectMake(xOffset, (size.height - self.progressView.frame.size.height) / 2,
-                                             width, self.progressView.frame.size.height);
+                                             width+18, self.progressView.frame.size.height);
         self.progressView.tintColor = self.audioViewAttributes.tintColor;
         [playView addSubview:self.progressView];
 

@@ -34,7 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 didChangeAudioCategory:(NSString *)category
                options:(AVAudioSessionCategoryOptions)options
                  error:(nullable NSError *)error;
-
+- (void) actPlayAudio: (NSURL*) url
+            audioMediaItem: (JSQAudioMediaItem*) audioMediaItem;
 @end
 
 
@@ -60,6 +61,8 @@ didChangeAudioCategory:(NSString *)category
  *  A data object that contains an audio resource.
  */
 @property (nonatomic, strong, nullable) NSData *audioData;
+
+@property NSURL* url;
 
 /**
  *  Initializes and returns a audio media item having the given audioData.
