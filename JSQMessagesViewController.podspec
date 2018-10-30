@@ -7,6 +7,7 @@ Pod::Spec.new do |s|
 
 	s.author = 'Jesse Squires'
 
+ 	s.homepage         = 'https://github.com/mansoor92/JSQMessagesViewController'
 	s.source = { :git => 'https://github.com/jessesquires/JSQMessagesViewController.git', :tag => s.version }
 	s.source_files = 'JSQMessagesViewController/**/*.{h,m}'
 
